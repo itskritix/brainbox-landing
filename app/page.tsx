@@ -681,7 +681,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 kritix / 3pe1x. Open source under Apache 2.0 license.</p>
+            <p>&copy; 2025 kritix / 3pe1x. Open source under Apache 2.0 license.</p>
             <p className="mt-2 text-xs">
               Built upon the excellent foundation of <span className="text-foreground font-medium">Colanode</span>. 
               Thanks to their amazing team for the inspiration and solid architecture.

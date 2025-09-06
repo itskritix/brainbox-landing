@@ -33,7 +33,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image 
-              src="/BrainboxLogo.png" 
+              src="/BrainBox.png" 
               alt="BrainBox Logo" 
               width={32} 
               height={32} 
@@ -605,7 +605,7 @@ export default function HomePage() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Image 
-                  src="/BrainboxLogo.png" 
+                  src="/BrainBox.png" 
                   alt="BrainBox Logo" 
                   width={24} 
                   height={24} 

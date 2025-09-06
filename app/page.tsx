@@ -17,6 +17,8 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { AnimatedCounter } from "@/components/ui/animated-counter"
+import { ExpandableFeature } from "@/components/ui/expandable-feature"
 
 export default function HomePage() {
   return (
@@ -67,8 +69,15 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4">
+      <section className="py-20 lg:py-32 relative overflow-hidden">
+        {/* Geometric Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full"></div>
+          <div className="absolute top-40 right-20 w-16 h-16 bg-primary/10 rotate-45"></div>
+          <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-primary/5 rotate-12"></div>
+          <div className="absolute top-1/3 right-1/3 w-2 h-32 bg-primary/20"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 mb-6">
               <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
@@ -110,18 +119,27 @@ export default function HomePage() {
             </div>
 
             {/* GitHub Stats */}
-            <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <Star className="w-4 h-4" />
-                <span>1.2k stars</span>
+            <div className="flex items-center justify-center gap-8 text-sm">
+              <div className="flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 border border-border/40">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
+                <Star className="w-4 h-4 text-yellow-600" />
+                <span className="font-medium">
+                  <AnimatedCounter end={1} suffix=" stars" />
+                </span>
               </div>
-              <div className="flex items-center gap-1">
-                <GitFork className="w-4 h-4" />
-                <span>Fork of Colanode</span>
+              <div className="flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 border border-border/40">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                <Users className="w-4 h-4 text-blue-600" />
+                <span className="font-medium">
+                  <AnimatedCounter end={0} suffix=" forks" />
+                </span>
               </div>
-              <div className="flex items-center gap-1">
-                <Users className="w-4 h-4" />
-                <span>Active community</span>
+              <div className="flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 border border-border/40">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <GitFork className="w-4 h-4 text-green-600" />
+                <span className="font-medium">
+                  <AnimatedCounter end={1} suffix=" deployments" />
+                </span>
               </div>
             </div>
           </div>
@@ -129,8 +147,16 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section id="features" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section id="features" className="py-20 bg-muted/30 relative overflow-hidden">
+        {/* Geometric Grid Background */}
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
+          <div className="grid grid-cols-12 gap-4 h-full">
+            {Array.from({ length: 60 }).map((_, i) => (
+              <div key={i} className="border border-primary/10"></div>
+            ))}
+          </div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Everything You Need to Collaborate</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -139,77 +165,89 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-2 hover:border-primary/20 transition-colors">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <MessageSquare className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Real-Time Chat</h3>
-                <p className="text-muted-foreground">
-                  Instant messaging with threads, reactions, and file sharing. All conversations stay on your servers.
-                </p>
-              </CardContent>
-            </Card>
+            <ExpandableFeature
+              icon={<MessageSquare className="w-6 h-6" />}
+              title="Real-Time Chat"
+              description="Instant messaging with threads, reactions, and file sharing. All conversations stay on your servers."
+              details={[
+                "Threaded conversations for organized discussions",
+                "Rich emoji reactions and custom reactions",
+                "Drag-and-drop file sharing with preview",
+                "Message search across all channels",
+                "Markdown support for formatted messages",
+                "Voice and video call integration"
+              ]}
+            />
 
-            <Card className="border-2 hover:border-primary/20 transition-colors">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Rich Documents</h3>
-                <p className="text-muted-foreground">
-                  Collaborative editing with blocks, tables, and media. Create wikis, notes, and documentation.
-                </p>
-              </CardContent>
-            </Card>
+            <ExpandableFeature
+              icon={<FileText className="w-6 h-6" />}
+              title="Rich Documents"
+              description="Collaborative editing with blocks, tables, and media. Create wikis, notes, and documentation."
+              details={[
+                "Real-time collaborative editing with conflict resolution",
+                "Rich text blocks: headings, lists, quotes, code blocks",
+                "Embed images, videos, and interactive media",
+                "Table creation with sorting and filtering",
+                "Document templates for consistent formatting",
+                "Export to PDF, Markdown, and HTML formats"
+              ]}
+            />
 
-            <Card className="border-2 hover:border-primary/20 transition-colors">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Database className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Custom Databases</h3>
-                <p className="text-muted-foreground">
-                  Build structured data with custom fields, views, and relationships. Perfect for project management.
-                </p>
-              </CardContent>
-            </Card>
+            <ExpandableFeature
+              icon={<Database className="w-6 h-6" />}
+              title="Custom Databases"
+              description="Build structured data with custom fields, views, and relationships. Perfect for project management."
+              details={[
+                "Custom field types: text, numbers, dates, files, relations",
+                "Multiple views: table, kanban, calendar, gallery",
+                "Advanced filtering and sorting options",
+                "Cross-database relationships and lookups",
+                "Automated workflows and triggers",
+                "API access for external integrations"
+              ]}
+            />
 
-            <Card className="border-2 hover:border-primary/20 transition-colors">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Offline-First</h3>
-                <p className="text-muted-foreground">
-                  Work seamlessly offline. Changes sync automatically when you're back online.
-                </p>
-              </CardContent>
-            </Card>
+            <ExpandableFeature
+              icon={<Zap className="w-6 h-6" />}
+              title="Offline-First"
+              description="Work seamlessly offline. Changes sync automatically when you're back online."
+              details={[
+                "Local-first architecture with automatic sync",
+                "Conflict resolution for simultaneous edits",
+                "Progressive web app for mobile offline access",
+                "Smart caching of frequently accessed content",
+                "Background sync with connection recovery",
+                "Offline indicators and sync status updates"
+              ]}
+            />
 
-            <Card className="border-2 hover:border-primary/20 transition-colors">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Privacy by Design</h3>
-                <p className="text-muted-foreground">
-                  End-to-end encryption, zero tracking, and complete data ownership. Your privacy is guaranteed.
-                </p>
-              </CardContent>
-            </Card>
+            <ExpandableFeature
+              icon={<Shield className="w-6 h-6" />}
+              title="Privacy by Design"
+              description="End-to-end encryption, zero tracking, and complete data ownership. Your privacy is guaranteed."
+              details={[
+                "AES-256 encryption for data at rest and in transit",
+                "Zero-knowledge architecture - we can't read your data",
+                "No telemetry, analytics, or user behavior tracking",
+                "GDPR and SOC2 compliant deployment options",
+                "Self-hosted means your data never leaves your servers",
+                "Regular security audits and vulnerability assessments"
+              ]}
+            />
 
-            <Card className="border-2 hover:border-primary/20 transition-colors">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Code className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Open Source</h3>
-                <p className="text-muted-foreground">
-                  Fully transparent, community-driven development. Contribute, customize, and extend as needed.
-                </p>
-              </CardContent>
-            </Card>
+            <ExpandableFeature
+              icon={<Code className="w-6 h-6" />}
+              title="Open Source"
+              description="Fully transparent, community-driven development. Contribute, customize, and extend as needed."
+              details={[
+                "Apache 2.0 license for maximum flexibility",
+                "Full source code available on GitHub",
+                "Plugin architecture for custom extensions",
+                "Community-driven roadmap and feature requests",
+                "Docker containers for easy deployment",
+                "Regular releases with community contributions"
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -374,8 +412,14 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
+        {/* Geometric Accent Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-40 h-40 border border-primary-foreground/20 rotate-45"></div>
+          <div className="absolute bottom-10 right-10 w-20 h-20 bg-primary-foreground/10 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-2 bg-primary-foreground/10"></div>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Take Control?</h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
             Join thousands of teams who've chosen data sovereignty over convenience.

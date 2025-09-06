@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: 'BrainBox - Your Data, Your Rules. Complete Control.',
   description: 'Open-source collaboration platform combining Notion-like documents with Slack-like messaging. Privacy-focused, local-first architecture with real-time sync. Self-host or use our cloud solution.',
   generator: 'Next.js',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({

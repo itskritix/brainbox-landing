@@ -40,7 +40,7 @@ export default function HomePage() {
               className="w-8 h-8"
             />
             <span className="font-bold text-xl">BrainBox</span>
-            <Badge variant="secondary" className="ml-2">
+            <Badge variant="secondary" className="ml-2 hidden sm:inline-flex">
               Open Source
             </Badge>
           </div>

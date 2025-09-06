@@ -5,8 +5,6 @@ import {
   ArrowRight,
   Shield,
   Database,
-  MessageSquare,
-  FileText,
   Zap,
   Users,
   Lock,
@@ -14,11 +12,18 @@ import {
   Download,
   Star,
   GitFork,
+  Brain,
+  Palette,
+  Puzzle,
+  Rocket,
+  FolderOpen,
+  Building,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
 import { ExpandableFeature } from "@/components/ui/expandable-feature"
+import { InteractiveFeatures } from "@/components/ui/interactive-features"
 
 export default function HomePage() {
   return (
@@ -49,7 +54,7 @@ export default function HomePage() {
             <Link href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">
               Pricing
             </Link>
-            <Link href="#docs" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="https://github.com/itskritix/brainbox" className="text-sm font-medium hover:text-primary transition-colors">
               Docs
             </Link>
             <Link
@@ -58,12 +63,17 @@ export default function HomePage() {
             >
               GitHub
             </Link>
+            <Link
+              href="https://x.com/3pe1x"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              Twitter
+            </Link>
           </nav>
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm">
-              Sign In
-            </Button>
-            <Button size="sm">Get Started</Button>
+            <Link href="https://brainbox.3pe1x.xyz/">
+              <Button size="sm">Get Started</Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -82,14 +92,21 @@ export default function HomePage() {
             <div className="flex items-center justify-center gap-2 mb-6">
               <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
                 <Code className="w-3 h-3 mr-1" />
-                Developer-First
+                AI-Powered
+              </Badge>
+              <Badge
+                variant="outline"
+                className="bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
+              >
+                <Database className="w-3 h-3 mr-1" />
+                Local-First
               </Badge>
               <Badge
                 variant="outline"
                 className="bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
               >
                 <Shield className="w-3 h-3 mr-1" />
-                Privacy-Focused
+                Open Source
               </Badge>
             </div>
 
@@ -99,8 +116,8 @@ export default function HomePage() {
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
-              BrainBox is an open-source collaboration platform that puts you in control. Real-time chat, rich
-              documents, and custom databases—all running on your infrastructure.
+              The open-source workspace that combines Notion + Slack with privacy-first design. 
+              Real-time collaboration, rich documents, and customizable databases—all local-first and self-hosted.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -135,10 +152,10 @@ export default function HomePage() {
                 </span>
               </div>
               <div className="flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 border border-border/40">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <GitFork className="w-4 h-4 text-green-600" />
+                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                <GitFork className="w-4 h-4 text-purple-600" />
                 <span className="font-medium">
-                  <AnimatedCounter end={1} suffix=" deployments" />
+                  Forked from Colanode
                 </span>
               </div>
             </div>
@@ -157,97 +174,184 @@ export default function HomePage() {
           </div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
+          <InteractiveFeatures />
+          
+          {/* Additional Features Grid */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold mb-4">Complete Feature Set</h3>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Beyond the core features, BrainBox includes everything you need for complete team collaboration.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <ExpandableFeature
+                icon={<Shield className="w-6 h-6" />}
+                title="Privacy by Design"
+                description="End-to-end encryption, zero tracking, and complete data ownership."
+                details={[
+                  "AES-256 encryption for data at rest and in transit",
+                  "Zero-knowledge architecture",
+                  "No telemetry or behavior tracking",
+                  "GDPR and SOC2 compliant deployment",
+                  "Self-hosted data control",
+                  "Regular security audits"
+                ]}
+              />
+
+              <ExpandableFeature
+                icon={<FolderOpen className="w-6 h-6" />}
+                title="File Management"
+                description="Secure S3-compatible file storage with advanced permissions."
+                details={[
+                  "S3-compatible storage backends",
+                  "Advanced file permissions",
+                  "File versioning and backups",
+                  "Drag-and-drop uploads",
+                  "Document preview generation",
+                  "Bulk operations support"
+                ]}
+              />
+
+              <ExpandableFeature
+                icon={<Building className="w-6 h-6" />}
+                title="Team Workspaces"
+                description="Multi-tenant workspaces with role-based access control."
+                details={[
+                  "Multi-tenant architecture",
+                  "Role-based access control",
+                  "Team and project organization",
+                  "Workspace customization",
+                  "Cross-workspace collaboration",
+                  "Activity feeds and notifications"
+                ]}
+              />
+
+              <ExpandableFeature
+                icon={<Code className="w-6 h-6" />}
+                title="Developer Ready"
+                description="Open source with modern architecture and comprehensive APIs."
+                details={[
+                  "Apache 2.0 license",
+                  "TypeScript throughout",
+                  "Modern React + Fastify stack",
+                  "Docker/Kubernetes ready",
+                  "Comprehensive API docs",
+                  "Active contribution community"
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Roadmap Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Everything You Need to Collaborate</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">What's Coming Next</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Built for teams who value privacy, control, and seamless collaboration.
+              Exciting AI-powered features in development to make BrainBox your ultimate learning companion.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ExpandableFeature
-              icon={<MessageSquare className="w-6 h-6" />}
-              title="Real-Time Chat"
-              description="Instant messaging with threads, reactions, and file sharing. All conversations stay on your servers."
-              details={[
-                "Threaded conversations for organized discussions",
-                "Rich emoji reactions and custom reactions",
-                "Drag-and-drop file sharing with preview",
-                "Message search across all channels",
-                "Markdown support for formatted messages",
-                "Voice and video call integration"
-              ]}
-            />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="group border-2 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 bg-gradient-to-br from-background to-muted/20 relative">
+              <div className="absolute top-4 right-4">
+                <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-700 border-yellow-500/30">
+                  Coming Soon
+                </Badge>
+              </div>
+              <CardContent className="p-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <Brain className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">AI Learning Assistant</h3>
+                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                  Your personal AI that helps you learn faster, understand complex topics, and connect knowledge across your documents.
+                </p>
+              </CardContent>
+            </Card>
 
-            <ExpandableFeature
-              icon={<FileText className="w-6 h-6" />}
-              title="Rich Documents"
-              description="Collaborative editing with blocks, tables, and media. Create wikis, notes, and documentation."
-              details={[
-                "Real-time collaborative editing with conflict resolution",
-                "Rich text blocks: headings, lists, quotes, code blocks",
-                "Embed images, videos, and interactive media",
-                "Table creation with sorting and filtering",
-                "Document templates for consistent formatting",
-                "Export to PDF, Markdown, and HTML formats"
-              ]}
-            />
+            <Card className="group border-2 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 bg-gradient-to-br from-background to-muted/20 relative">
+              <div className="absolute top-4 right-4">
+                <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-700 border-yellow-500/30">
+                  Coming Soon
+                </Badge>
+              </div>
+              <CardContent className="p-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <Palette className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">Custom Themes</h3>
+                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                  Personalize your workspace with custom themes, colors, and layouts that match your style and workflow.
+                </p>
+              </CardContent>
+            </Card>
 
-            <ExpandableFeature
-              icon={<Database className="w-6 h-6" />}
-              title="Custom Databases"
-              description="Build structured data with custom fields, views, and relationships. Perfect for project management."
-              details={[
-                "Custom field types: text, numbers, dates, files, relations",
-                "Multiple views: table, kanban, calendar, gallery",
-                "Advanced filtering and sorting options",
-                "Cross-database relationships and lookups",
-                "Automated workflows and triggers",
-                "API access for external integrations"
-              ]}
-            />
+            <Card className="group border-2 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 bg-gradient-to-br from-background to-muted/20 relative">
+              <div className="absolute top-4 right-4">
+                <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-700 border-yellow-500/30">
+                  Coming Soon
+                </Badge>
+              </div>
+              <CardContent className="p-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <Puzzle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">Tool Integrations</h3>
+                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                  Free integrations with Slack, Gmail, and other essential tools to streamline your workflow.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
 
-            <ExpandableFeature
-              icon={<Zap className="w-6 h-6" />}
-              title="Offline-First"
-              description="Work seamlessly offline. Changes sync automatically when you're back online."
-              details={[
-                "Local-first architecture with automatic sync",
-                "Conflict resolution for simultaneous edits",
-                "Progressive web app for mobile offline access",
-                "Smart caching of frequently accessed content",
-                "Background sync with connection recovery",
-                "Offline indicators and sync status updates"
-              ]}
-            />
-
-            <ExpandableFeature
-              icon={<Shield className="w-6 h-6" />}
-              title="Privacy by Design"
-              description="End-to-end encryption, zero tracking, and complete data ownership. Your privacy is guaranteed."
-              details={[
-                "AES-256 encryption for data at rest and in transit",
-                "Zero-knowledge architecture - we can't read your data",
-                "No telemetry, analytics, or user behavior tracking",
-                "GDPR and SOC2 compliant deployment options",
-                "Self-hosted means your data never leaves your servers",
-                "Regular security audits and vulnerability assessments"
-              ]}
-            />
-
-            <ExpandableFeature
-              icon={<Code className="w-6 h-6" />}
-              title="Open Source"
-              description="Fully transparent, community-driven development. Contribute, customize, and extend as needed."
-              details={[
-                "Apache 2.0 license for maximum flexibility",
-                "Full source code available on GitHub",
-                "Plugin architecture for custom extensions",
-                "Community-driven roadmap and feature requests",
-                "Docker containers for easy deployment",
-                "Regular releases with community contributions"
-              ]}
-            />
+          <div className="text-center mt-12">
+            <div className="bg-muted/30 rounded-2xl p-8 max-w-4xl mx-auto">
+              <h3 className="text-2xl font-semibold mb-4">Built by <Link href="https://x.com/itskritix" className="text-primary hover:underline">@kritix</Link></h3>
+              <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
+                Solo developer passionate about minimal design and making the best software free. 
+                Part of the <span className="text-primary font-medium">3pe1x</span> mission to make learning, developing, and documenting better for everyone.
+              </p>
+              
+              <div className="bg-background/50 rounded-xl p-4 mb-6 border border-border/40">
+                <p className="text-sm text-muted-foreground">
+                  🙏 <strong>Special thanks to the Colanode team</strong> for creating the amazing foundation that made BrainBox possible. 
+                  This project builds upon their excellent work and takes it in new directions with AI-powered features and enhanced collaboration.
+                </p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  BrainBox is a fork of Colanode, improved with additional features, AI integration, and a focus on learning workflows.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div className="flex items-center justify-center gap-2 bg-background/50 rounded-lg p-3">
+                  <Code className="w-4 h-4 text-primary" />
+                  <span>TypeScript</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 bg-background/50 rounded-lg p-3">
+                  <Rocket className="w-4 h-4 text-primary" />
+                  <span>React + Fastify</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 bg-background/50 rounded-lg p-3">
+                  <Database className="w-4 h-4 text-primary" />
+                  <span>PostgreSQL</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 bg-background/50 rounded-lg p-3">
+                  <Zap className="w-4 h-4 text-primary" />
+                  <span>Local-First</span>
+                </div>
+              </div>
+              
+              <div className="mt-6 pt-6 border-t border-border/40">
+                <p className="text-xs text-muted-foreground italic">
+                  "Making learning, developing, and documenting experiences better — one commit at a time."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -257,9 +361,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Your Data Stays Yours</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Your Second Brain, Your Rules</h2>
               <p className="text-xl text-muted-foreground">
-                Unlike cloud platforms that monetize your data, BrainBox gives you complete control.
+                Unlike cloud platforms that monetize your knowledge, BrainBox keeps your second brain truly private and under your control.
               </p>
             </div>
 
@@ -301,112 +405,164 @@ export default function HomePage() {
               </div>
 
               <div className="bg-muted/50 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold mb-4">Why Choose BrainBox?</h3>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    No vendor lock-in or data silos
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    GDPR and SOC2 compliant by design
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    No usage limits or per-user pricing
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    Full control over updates and features
-                  </li>
-                </ul>
+                <h3 className="text-xl font-semibold mb-4">Perfect for Everyone</h3>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <h4 className="font-medium mb-2 flex items-center gap-2"><Code className="w-4 h-4" /> Developers</h4>
+                    <p className="text-muted-foreground text-xs">Code docs, project notes, API references</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2 flex items-center gap-2"><Users className="w-4 h-4" /> Teams</h4>
+                    <p className="text-muted-foreground text-xs">Collaborative wikis, shared knowledge</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2 flex items-center gap-2"><Brain className="w-4 h-4" /> Students</h4>
+                    <p className="text-muted-foreground text-xs">Study notes, research, assignments</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2 flex items-center gap-2"><Building className="w-4 h-4" /> Enterprises</h4>
+                    <p className="text-muted-foreground text-xs">Secure documentation, compliance</p>
+                  </div>
+                </div>
+                <div className="mt-6 pt-6 border-t border-border/40">
+                  <h4 className="font-medium mb-3">Why BrainBox vs Notion?</h4>
+                  <ul className="space-y-2 text-xs text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                      AI-powered learning assistant (coming soon)
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                      Local-first, works offline
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                      Free forever, no user limits
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                      Your data never leaves your servers
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+      {/* Deployment Section */}
+      <section id="deployment" className="py-20 bg-muted/30 relative overflow-hidden">
+        {/* Geometric Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 right-10 w-40 h-40 border-2 border-primary/10 rotate-45"></div>
+          <div className="absolute bottom-20 left-20 w-24 h-24 bg-primary/5 rounded-full"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Deploy Anywhere, Own Everything</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Open source means no hidden costs. Pay only for what you need.
+              Free beta now available. Self-host with Docker/Kubernetes for complete control over your data.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-2 hover:border-primary/20 transition-colors">
+            <Card className="group border-2 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-semibold mb-2">Open Source</h3>
-                  <div className="text-3xl font-bold mb-1">Free</div>
-                  <p className="text-sm text-muted-foreground">Forever</p>
+                  <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Rocket className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Try Free Beta</h3>
+                  <p className="text-sm text-muted-foreground">Experience BrainBox instantly</p>
                 </div>
                 <ul className="space-y-3 text-sm mb-6">
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Self-hosted deployment
+                    <Zap className="w-3 h-3 text-blue-500" />
+                    Hosted at brainbox.3pe1x.xyz
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Unlimited users
+                    <Rocket className="w-3 h-3 text-blue-500" />
+                    No setup required
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Community support
+                    <Shield className="w-3 h-3 text-blue-500" />
+                    Full feature access
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Apache 2.0 license
-                  </li>
-                </ul>
-                <Link href="https://github.com/itskritix/brainbox" className="block">
-                  <Button className="w-full bg-transparent" variant="outline">
-                    <Download className="mr-2 w-4 h-4" />
-                    Get Started
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-primary hover:border-primary/60 transition-colors relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
-              </div>
-              <CardContent className="p-6">
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-semibold mb-2">Professional</h3>
-                  <div className="text-3xl font-bold mb-1">TBD</div>
-                  <p className="text-sm text-muted-foreground">free for now</p>
-                </div>
-                <ul className="space-y-3 text-sm mb-6">
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Everything in Open Source
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Priority support
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Advanced integrations
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Custom branding
+                    <Palette className="w-3 h-3 text-blue-500" />
+                    Perfect for testing and demos
                   </li>
                 </ul>
                 <Link href="https://brainbox.3pe1x.xyz/" className="block">
                   <Button className="w-full">
-                    Get Started
+                    Try Free Beta
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
               </CardContent>
             </Card>
+
+            <Card className="group border-2 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 border-primary/40">
+              <CardContent className="p-6">
+                <div className="text-center mb-6">
+                  <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Self-Host</h3>
+                  <p className="text-sm text-muted-foreground">Complete control & privacy</p>
+                </div>
+                <ul className="space-y-3 text-sm mb-6">
+                  <li className="flex items-center gap-2">
+                    <Database className="w-3 h-3 text-green-500" />
+                    Docker & Kubernetes ready
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Code className="w-3 h-3 text-green-500" />
+                    PostgreSQL + Redis + S3
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <FolderOpen className="w-3 h-3 text-green-500" />
+                    Apache 2.0 license
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Users className="w-3 h-3 text-green-500" />
+                    Unlimited users forever
+                  </li>
+                </ul>
+                <Link href="https://github.com/itskritix/brainbox" className="block">
+                  <Button variant="outline" className="w-full">
+                    <Download className="mr-2 w-4 h-4" />
+                    Self-Host Now
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="mt-16 text-center">
+            <div className="bg-muted/50 rounded-2xl p-8 max-w-3xl mx-auto">
+              <h3 className="text-lg font-semibold mb-4">System Requirements</h3>
+              <div className="grid md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h4 className="font-medium mb-2 text-primary">Database</h4>
+                  <p className="text-muted-foreground">PostgreSQL 14+ with pgvector extension</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2 text-primary">Cache & Queue</h4>
+                  <p className="text-muted-foreground">Redis 6+ for sessions and real-time features</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2 text-primary">File Storage</h4>
+                  <p className="text-muted-foreground">S3-compatible storage (AWS S3, MinIO, etc.)</p>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t border-border/40">
+                <p className="text-xs text-muted-foreground">
+                  💡 <strong>Professional plans coming soon</strong> with managed hosting, priority support, and advanced enterprise features
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -420,9 +576,9 @@ export default function HomePage() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-2 bg-primary-foreground/10"></div>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Take Control?</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Build Your Second Brain?</h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Join thousands of teams who've chosen data sovereignty over convenience.
+            Join developers, teams, and students building better workflows with privacy-first collaboration.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="https://github.com/itskritix/brainbox">
@@ -457,7 +613,7 @@ export default function HomePage() {
                 />
                 <span className="font-bold">BrainBox</span>
               </div>
-              <p className="text-sm text-muted-foreground">Open-source collaboration platform by 3pe1x</p>
+              <p className="text-sm text-muted-foreground">Open-source collaboration platform by <Link href="https://x.com/itskritix" className="hover:text-foreground transition-colors">kritix</Link> / 3pe1x</p>
             </div>
 
             <div>
@@ -525,7 +681,11 @@ export default function HomePage() {
           </div>
 
           <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 3pe1x. Open source under Apache 2.0 license.</p>
+            <p>&copy; 2024 kritix / 3pe1x. Open source under Apache 2.0 license.</p>
+            <p className="mt-2 text-xs">
+              Built upon the excellent foundation of <span className="text-foreground font-medium">Colanode</span>. 
+              Thanks to their amazing team for the inspiration and solid architecture.
+            </p>
           </div>
         </div>
       </footer>

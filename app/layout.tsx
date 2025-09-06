@@ -5,9 +5,9 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'BrainBox - Your Data, Your Rules. Complete Control.',
+  description: 'Open-source collaboration platform combining Notion-like documents with Slack-like messaging. Privacy-focused, local-first architecture with real-time sync. Self-host or use our cloud solution.',
+  generator: 'Next.js',
 }
 
 export default function RootLayout({

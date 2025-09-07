@@ -51,6 +51,9 @@ export default function HomePage() {
             <Link href="#privacy" className="text-sm font-medium hover:text-primary transition-colors">
               Privacy
             </Link>
+            <Link href="/roadmap" className="text-sm font-medium hover:text-primary transition-colors">
+              Roadmap
+            </Link>
             <Link href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">
               Pricing
             </Link>
@@ -630,7 +633,7 @@ export default function HomePage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-foreground transition-colors">
+                  <Link href="/roadmap" className="hover:text-foreground transition-colors">
                     Roadmap
                   </Link>
                 </li>
